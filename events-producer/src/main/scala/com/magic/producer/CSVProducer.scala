@@ -15,7 +15,7 @@ object CSVProducer {
   def run(kafkaConfig: Properties): Unit = {
     println("-- Running CSV producer")
 
-    val bufferedSource = io.Source.fromFile("/Users/tal/Downloads/temp2.csv")
+    val bufferedSource = io.Source.fromFile("./temp2.csv")
     //drop the headers first line
     for (line <- bufferedSource.getLines.drop(1)) {
       val cols = line.split(",").map(_.trim)
