@@ -12,7 +12,7 @@ echo "baseDir=$baseDir"
 
 producerJar="$baseDir/events-producer/target/magic-events-producer.jar"
 
-java -jar $producerJar csv.location=$INSIGHTEDGE_HOME
+java -jar $producerJar
 
 popd
 

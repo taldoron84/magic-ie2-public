@@ -20,7 +20,7 @@ object ProducerApp extends App{
     props.put(BOOTSTRAP_SERVERS, mapArgs.getOrElse(BOOTSTRAP_SERVERS, "localhost:9092"))
     props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
     props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
-    props.put(CSV_LOCATION, mapArgs.get(CSV_LOCATION))
+    props.put(CSV_LOCATION, mapArgs.getOrElse(CSV_LOCATION,"/home/yuval/opt/magic/gigaspaces-insightedge-1.0.0-premium"))
     props.put(TOPIC_CAR, mapArgs.getOrElse(TOPIC_CAR, "car_events"))
     props
   }
