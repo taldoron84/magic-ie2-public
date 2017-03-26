@@ -11,6 +11,7 @@ package object producer {
 
   val TOPIC_CAR = "topic.car"
   val BOOTSTRAP_SERVERS = "bootstrap.servers"
+  val CSV_LOCATION = "csv.location"
 
   implicit val locationWriter = Json.writes[Location]
   implicit val carEventWriter = Json.writes[CarEvent]

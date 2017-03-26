@@ -20,6 +20,7 @@ object ProducerApp extends App{
     props.put(BOOTSTRAP_SERVERS, mapArgs.getOrElse(BOOTSTRAP_SERVERS, "localhost:9092"))
     props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
     props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+    props.put(CSV_LOCATION, mapArgs.get(CSV_LOCATION))
     props.put(TOPIC_CAR, mapArgs.getOrElse(TOPIC_CAR, "car_events"))
     props
   }
