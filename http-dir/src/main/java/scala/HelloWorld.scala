@@ -80,9 +80,7 @@ object Main {
   }
 }
 
-object KafkaReader{
 
-}
 
 
 object HttpServer {

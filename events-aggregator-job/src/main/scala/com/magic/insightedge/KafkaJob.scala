@@ -2,8 +2,8 @@ package com.magic.insightedge
 
 import java.util._
 
-import com.gigaspaces.client.{ChangeModifiers, ChangeSet}
-import com.gigaspaces.query.IdQuery
+//import com.gigaspaces.client.{ChangeModifiers, ChangeSet}
+//import com.gigaspaces.query.IdQuery
 import com.magic.events.Events.CarEvent
 
 
@@ -90,8 +90,8 @@ object KafkaJob {
         producer.send(new ProducerRecord[String, String](topic, eventJson))
       }
 
-      val idQuery = new IdQuery[model.CarEvent](classOf[model.CarEvent],car.ID)
-      sc.grid.change(idQuery, new ChangeSet().set("isSentByHttp", "true"), ChangeModifiers.NONE)
+//      val idQuery = new IdQuery[model.CarEvent](classOf[model.CarEvent],car.ID)
+//      sc.grid.change(idQuery, new ChangeSet().set("isSentByHttp", "true"), ChangeModifiers.NONE)
 
     }
     //Since we've change the boolean attribute of HTTP, save back to grid
