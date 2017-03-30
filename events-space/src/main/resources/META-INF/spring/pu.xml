@@ -7,7 +7,8 @@
       xsi:schemaLocation="
    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
-   http://www.openspaces.org/schema/core http://www.openspaces.org/schema/10.1/core/openspaces-core.xsd">
+   http://www.openspaces.org/schema/core http://www.openspaces.org/schema/12.0/core/openspaces-core.xsd
+   http://www.openspaces.org/schema/events http://www.openspaces.org/schema/12.0/events/openspaces-events.xsd">
  
       <!-- Scan the packages for annotations / -->
       <context:component-scan base-package="com.magic" />
@@ -17,18 +18,29 @@
  
       <!-- A bean representing a space (an IJSpace implementation) -->
       <os-core:distributed-tx-manager id="transactionManager"/>
- 
-<!--        <os-core:space id="mySpace" url="jini://*/*/MySpace1?locators=127.0.0.1" />
-      <os-core:giga-space id="gigaMySpace" space="mySpace" tx-manager="transactionManager"/> -->
- 
 
       <os-core:embedded-space id="insightedgespace" name="insightedge-space" /> 
-    
-
+  
       <!--
           A wrapper bean to the space to provide OpenSpaces simplified space API (built on top of IJSpace/JavaSpace).
       -->
-      <os-core:giga-space id="gigaSpaceProxy" space="insightedgespace" tx-manager="transactionManager"/>
+      <os-core:giga-space id="gigaSpace" space="insightedgespace" tx-manager="transactionManager"/>
+      
+      <bean id="carEventListener" class="com.magic.CarEventProcessor" />
+		<os-events:polling-container id="eventContainer" giga-space="gigaSpace">
+
+	    <os-core:template>
+	        <bean class="com.magic.insightedge.model.CarEvent">
+	            <property name="isSentByHttp" value="false"/>
+	        </bean>
+	    </os-core:template>
+
+    <os-events:listener>
+        <os-events:annotation-adapter>
+            <os-events:delegate ref="carEventListener"/>
+        </os-events:annotation-adapter>
+    </os-events:listener>
+</os-events:polling-container>
 </beans>
 
  
