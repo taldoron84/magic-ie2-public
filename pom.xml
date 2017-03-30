@@ -42,6 +42,7 @@
     </profiles>
 
     <modules>
+		<module>events-space</module>
         <module>events-model</module>
         <module>events-producer</module>
         <module>events-aggregator-job</module>
