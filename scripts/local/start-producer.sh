@@ -12,8 +12,11 @@ echo "baseDir=$baseDir"
 
 producerJar="$baseDir/events-producer/target/magic-events-producer.jar"
 
-java -jar $producerJar
-#java -jar $producerJar csv.location="/Users/tal/Downloads/temp2.csv"
+#On magic server:
+#java -jar $producerJar
+
+#On personal computer:
+java -jar $producerJar csv.location="/Users/tal/Downloads/temp2.csv"
 
 
 popd
