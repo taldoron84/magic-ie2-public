@@ -28,13 +28,8 @@
       
       <bean id="carEventListener" class="com.magic.CarEventProcessor" />
 		<os-events:polling-container id="eventContainer" giga-space="gigaSpace">
-
-	    <os-core:template>
-	        <bean class="com.magic.insightedge.model.CarEvent">
-	            <property name="isSentByHttp" value="false"/>
-	        </bean>
-	    </os-core:template>
-
+		<os-core:sql-query where="" class="com.magic.insightedge.model.CarEvent"/>
+	    
     <os-events:listener>
         <os-events:annotation-adapter>
             <os-events:delegate ref="carEventListener"/>
